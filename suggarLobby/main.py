@@ -1,10 +1,14 @@
-from repository import repository_base;
+from repository import repository_base
 
-connection = repository_base.repository_base.connect();
+def main():
+    print('Iniciando a aplicação...')
+    
+    print('Criando tabelas')
+    repository_base.create_tables();
+    print('Tabelas criadas')
+    
+    print('Aplicação está rodando!')
+    
 
-cursor = connection.cursor();
-cursor.execute("select * from cliente")
-
-result = cursor.fetchall();
-for r in result:
-    print(r)
+if __name__ == "__main__":
+    main()

@@ -1,26 +1,20 @@
-import mysql.connector
-from mysql.connector import Error
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from entity.Entities import Base
 
-class repository_base:
-    def connect():
-        try:
-            connection = mysql.connector.connect(
-                host='localhost',
-                database='locadora',
-                user='root',
-                password='root' 
-            )
+def create_tables():
+    try:
+        db_url = 'mysql://root:root@localhost:3306/harmonic'
+        engine = create_engine(db_url)
+        Base.metadata.create_all(engine)
 
-            if connection.is_connected():
-                print("Conexão bem-sucedida ao MySQL")
+        Session = sessionmaker(bind=engine)
+        session = Session()
+    except Exception as e:
+        print(f'Erro ao criar as tabelas: {e}')
 
-                cursor = connection.cursor()
-                
-                cursor.execute("SELECT DATABASE();")
-                db_info = cursor.fetchone()
-                print(f"Conectado ao banco de dados: {db_info}")
-                cursor.close();
-
-            return connection;
-        except Error as e:
-            print(f"Erro ao conectar ao MySQL: {e}");
+    try:
+        with engine.connect():
+            print("Conexão bem-sucedida!")
+    except Exception as e:
+        print(f"Erro ao conectar ao banco de dados: {e}")
