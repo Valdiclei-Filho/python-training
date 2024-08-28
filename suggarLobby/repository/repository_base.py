@@ -4,7 +4,7 @@ from entity.Entities import Base
 
 def create_tables():
     try:
-        db_url = 'mysql://root:root@localhost:3306/harmonic'
+        db_url = 'mysql://root:root@localhost:3306/python_training'
         engine = create_engine(db_url)
         Base.metadata.create_all(engine)
 
