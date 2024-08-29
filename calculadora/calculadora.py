@@ -1,30 +1,9 @@
 import keyboard as k
-
-#region Utils
-def getInputAsInt():
-    try:
-        return int(input());
-    except ValueError:
-        print(msgValorInvalidoNumero);
-
-def getInputAsFloat():
-    try:
-        return float(input());
-    except ValueError:
-        print(msgValorInvalidoNumero);
-
-def getInputAsStr():
-    try:
-        return str(input());
-    except ValueError:
-        print(msgValorInvalidoStr);
-#endregion
+from shared import console
 
 print('Calculadora');
 print('=======================');
 
-msgValorInvalidoNumero = 'Valor informado inválido, Informe um número.';
-msgValorInvalidoStr = 'Valor informado inválido, Informe um texto.';
 resultado = 'Resultado: ';
 rodando = True
 
@@ -36,10 +15,10 @@ while rodando:
         continue
     
     print('Informe o primeiro número:')
-    n1 = getInputAsFloat();
+    n1 = console.getInputAsFloat();
 
     print('Informe o segundo número:')
-    n2 = getInputAsFloat();
+    n2 = console.getInputAsFloat();
 
     print('Selecione a operação matemática:');
     print('1 - Subtração');
@@ -47,7 +26,7 @@ while rodando:
     print('3 - Multiplicação');
     print('4 - Adição');
 
-    operacao = getInputAsInt();
+    operacao = console.getInputAsInt();
 
     if operacao == 1:
         print(f'{resultado} {n1 - n2}')

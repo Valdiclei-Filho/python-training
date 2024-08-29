@@ -1,4 +1,6 @@
-from repository import repository_base
+from repository import repository_base, acompanhante_repository
+from entity.Entities import AcompanhanteEntity
+import datetime
 
 def main():
     print('Iniciando a aplicação...')

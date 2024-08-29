@@ -8,9 +8,9 @@ class AcompanhanteEntity(Base):
     __tablename__ = 'acompanhantes'
     
     id = Column('Id', Integer, primary_key=True, autoincrement=True, unique=True)
-    precoHora = Column('PrecoHora', Numeric(3, 2), nullable=False)
+    precoHora = Column('PrecoHora', Numeric(5, 2), nullable=False)
     dataNascimento = Column('DataNascimento', DateTime, nullable=False)
-    cargaHoraria = Column('CargaHoraria', Numeric(3, 2), nullable=False)
+    cargaHoraria = Column('CargaHoraria', Numeric(5, 2), nullable=False)
     nome = Column('Nome', String(45), nullable=False)
     dataCadastro = Column('DataCadastro', DateTime, nullable=False, default=datetime.now())
     
@@ -48,3 +48,11 @@ class JobEntity(Base):
 
     def calcularDuracao(self) -> timedelta:
         return self.fim - self.inicio
+    
+class JobRealizadoEntity(Base):
+    __tablename__= 'jobs_realizados'
+    
+    id = Column('Id', Integer, primary_key=True, autoincrement=True, unique=True)
+    jobId= Column('JobId', Integer, ForeignKey('jobs.Id'))
+    jobTipoId= Column('JobTipoId', Integer, ForeignKey('job_tipos.Id'))
+    
