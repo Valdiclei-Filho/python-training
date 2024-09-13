@@ -67,7 +67,7 @@ def algoritmo_genetico(tamanho_populacao, num_materias_primas, receita, custos, 
 num_materias_primas = 5  # Número de matérias-primas
 custos = [5, 10, 7, 8, 9]  # Custos das matérias-primas
 tamanho_populacao = 80  # Tamanho da população
-num_geracoes = 3  # Número de gerações
+num_geracoes = 300  # Número de gerações
 receita = 1000  # Receita obtida pela venda do produto
 
 # Executar o algoritmo genético
