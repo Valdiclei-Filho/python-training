@@ -42,7 +42,7 @@ def calcular():
     print(resultado)
     return jsonify({'resultado': resultado}), 200
 
-@app.route('ga/mapa', method=['POST'])
+@app.route('/ga/mapa', method=['POST'])
 def calcularMapa():
     data = request.json
 
